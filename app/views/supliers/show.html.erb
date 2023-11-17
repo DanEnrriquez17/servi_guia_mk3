@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="suplier-show-card-center">
+    <p class="suplier-show-title"><%= @suplier.name %> <%= @suplier.last_name %></p>
+    <% if @suplier.avatar.attached? %>
+      <%= cl_image_tag @suplier.avatar.key, class: "suplier-show-img"%>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/djmnbuel1/image/upload/v1696961779/Servi%20guia/service_jqfxie.png", class:"suplier-show-img"%>
+    <% end %>
+    <p class="suplier-show-info"><%= @suplier.grade %> <%= render_stars(@suplier.grade) %></p>
+  </div>
+  <div class="suplier-show-card-left">
+    <p class="suplier-show-info"><%= @suplier.job %></p>
+    <p class="suplier-show-info">Horarios: <br>
+      <%= @suplier.hour %></p>
+    <p class="suplier-show-info">Costos: $<%= @suplier.cost %></p>
+    <p class="suplier-show-info">Teléfono: <%= @suplier.phone %></p>
+  </div>
+  <!-- Button trigger modal -->
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= link_to "Inicio", root_path, class: 'btn btn-primary' %>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Reseñas
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reseñas de <%= @suplier.name %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% if @reviews.any? %>
+              <% @reviews.each do |r| %>
+                <h4><%= r.name %> <%= r.last_name %></h4>
+                <p><%= r.review %></p>
+                <p><%= r.grade %></p>
+              <% end %>
+            <% else %>
+              <em>Aún no hay reseñas</em>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <!--<button type="button" class="btn btn-primary">Nueva reseña</button>--> <!--Aquí renderizaremos un formulario para crear una nueva reseña-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

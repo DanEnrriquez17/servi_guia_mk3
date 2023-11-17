@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: supliers_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Busca un proveedor o un servicio específico"
+        %>
+        <%= submit_tag "Buscar", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center mx-1">
+    <% if @supliers.any? %>
+      <% @supliers.each do |suplier| %>
+        <div class="col-sm-12 col-md-6 col-lg-3 suplier-card">
+          <% if suplier.avatar.attached? %>
+            <%= cl_image_tag suplier.avatar.key, class: "suplier-img"%>
+          <% else %>
+            <%= image_tag "https://res.cloudinary.com/djmnbuel1/image/upload/v1696961779/Servi%20guia/service_jqfxie.png", class:"suplier-img"%>
+          <% end %>
+          <p class="suplier-info"><%= suplier.name %> <%= suplier.last_name %></p>
+          <p class="suplier-info"><%= suplier.job %></p>
+          <p class="suplier-info"><%= suplier.grade%> <%= render_stars(suplier.grade) %></p>
+          <%= link_to "Ver más", suplier_path(suplier), class: 'btn btn-light' %>
+        </div>
+      <% end %>
+    <% else %>
+      <em>Aún no hay proveedores</em>
+    <% end %>
+  </div>
+</div>

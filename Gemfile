@@ -45,7 +45,14 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+# Devise for signing in
 gem "devise"
+
+# Cloudinary for photos
+gem "cloudinary"
+
+# Google geocoding
+gem "geocoder"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

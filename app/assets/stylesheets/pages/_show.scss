@@ -1,0 +1,27 @@
+.suplier-show-card-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+}
+.suplier-show-card-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 0.5em;
+}
+.suplier-show-info{
+  font-size: 1.5em;
+  margin: 0.5em 0em;
+}
+.suplier-show-title{
+  font-size: 2em;
+  margin: 1em 0em;
+}
+.suplier-show-img{
+  height: 10em;
+  width: auto;
+  border-radius: 50%;
+}
